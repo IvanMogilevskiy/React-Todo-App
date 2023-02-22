@@ -1,14 +1,12 @@
 import TaskItem from "./TaskItem.jsx";
+import { useSelector } from "react-redux";
 
 const TaskList = () => {
-  const tasks = [
-    { id: 1, title: 'todo1', completed: false },
-    { id: 1, title: 'todo2', completed: false },
-  ];
+  const tasks = useSelector((state) => state.tasks);
 
   return (
     <ul className="list-group">
-      {todos.map((task) => (
+      {tasks.map((task) => (
         <TaskItem id={task.id} title={task.title} completed={task.completed} />
       ))}
     </ul>

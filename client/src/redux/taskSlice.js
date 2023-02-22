@@ -14,7 +14,7 @@ const taskSlice = createSlice({
         title: action.payload.title,
         completed: false,
       };
-      state.push(newTodo);
+      state.push(newTask);
     },
   },
 });
