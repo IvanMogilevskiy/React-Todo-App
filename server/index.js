@@ -1,13 +1,21 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const colors = require('colors');
-const cors = require('cors');
-const { json } = require('body-parser');
-const { nanoid } = require('nanoid');
+import express from 'express';
+import dotenv from 'dotenv';
+import colors from 'colors';
+import cors from 'cors';
+import pkg from 'body-parser';
+import { nanoid } from 'nanoid';
+// const express = require('express');
+// const dotenv = require('dotenv');
+// const colors = require('colors');
+// const cors = require('cors');
+// const { json } = require('body-parser');
+// const { nanoid } = require('nanoid');
 
 dotenv.config({ path: './config.env' });
 
 const app = express();
+
+const { json } = pkg;
 
 app.use(cors());
 app.use(json());
@@ -44,6 +52,6 @@ app.patch('/todos/:id', (req, res) => {
   res.send(todos);
 });
 
-const PORT = 7000;
+const PORT = 5001;
 
-app.listen(PORT, console.log(`Server running on port ${PORT}`.green.bold));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`.green.bold));
