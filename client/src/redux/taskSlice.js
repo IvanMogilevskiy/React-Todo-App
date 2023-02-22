@@ -16,9 +16,15 @@ const taskSlice = createSlice({
       };
       state.push(newTask);
     },
+    completeTask: (state, action) => {
+      const taskIndex = state.findIndex(
+        (task) => task.id === action.payload.id
+      );
+      state[taskIndex].completed = action.payload.completed
+    },
   },
 });
 
-export const { addTask } = taskSlice.actions;
+export const { addTask, completeTask } = taskSlice.actions;
 
 export default taskSlice.reducer;
