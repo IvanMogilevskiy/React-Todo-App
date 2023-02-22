@@ -1,11 +1,16 @@
+/* eslint-disable functional/no-expression-statements */
 import { useDispatch } from 'react-redux';
-import { completeTask } from '../redux/taskSlice.js';
+import { completeTask, deleteTask } from '../redux/taskSlice.js';
 
 const TaskItem = ({ id, title, completed }) => {
   const dispatch = useDispatch();
 
   const handleCompleteTask = () => {
     dispatch(completeTask({ id, completed: !completed}));
+  };
+
+  const handleDeleteTask = () => {
+    dispatch(deleteTask({ id }));
   };
 
   return (
@@ -20,7 +25,13 @@ const TaskItem = ({ id, title, completed }) => {
           />
           {title}
         </span>
-        <button className="btn btn-danger">Delete</button>
+        <button 
+          className="btn btn-danger"
+          type="button"
+          onClick={handleDeleteTask}
+        >
+          Delete
+        </button>
       </div>
     </li>
   );
