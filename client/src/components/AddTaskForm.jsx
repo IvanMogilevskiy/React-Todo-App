@@ -1,6 +1,8 @@
+/* eslint-disable functional/no-expression-statements */
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTask } from '../redux/taskSlice.js';
+import { addNewTask } from '../redux/taskSlice.js';
+
 
 const AddTaskForm = () => {
   const [value, setValue] = useState('');
@@ -9,7 +11,7 @@ const AddTaskForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTask({
+    dispatch(addNewTask({
         title: value,
       })
     )
