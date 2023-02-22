@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState } from 'react';
+import {useDispatch} from 'react-redux';
+import { addTask } from '../redux/taskSlice.js';
 
 const AddTaskForm = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
+
+  const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(value);
+    dispatch(addTask({
+        title: value,
+      })
+    )
   };
 
   return (
