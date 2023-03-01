@@ -4,12 +4,6 @@ import colors from 'colors';
 import cors from 'cors';
 import pkg from 'body-parser';
 import { nanoid } from 'nanoid';
-// const express = require('express');
-// const dotenv = require('dotenv');
-// const colors = require('colors');
-// const cors = require('cors');
-// const { json } = require('body-parser');
-// const { nanoid } = require('nanoid');
 
 dotenv.config({ path: './config.env' });
 
@@ -44,7 +38,17 @@ app.post('/tasks', (req, res) => {
 app.patch('/tasks/:id', (req, res) => {
   const id = req.params.id;
   const index = tasks.findIndex((task) => task.id === id);
+  const completed = Boolean(req.body.completed);
 
+  if (index > -1) {
+    tasks[index].completed = completed;
+  }
+  return res.send(tasks[index]);
+});
+
+app.delete('/tasks/:id', (req, res) => {
+  const id = req.params.id;
+  const index = tasks.findIndex((task) => task.id == id);
   if (index > -1) {
     tasks.splice(index, 1);
   }
