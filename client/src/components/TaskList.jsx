@@ -1,6 +1,7 @@
 /* eslint-disable functional/no-expression-statements */
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { ListGroup } from "react-bootstrap";
 import TaskItem from "./TaskItem.jsx";
 import { fetchTasks } from "../redux/taskSlice.js";
 
@@ -14,16 +15,16 @@ const TaskList = () => {
   }, [dispatch]);
 
   return (
-    <ul className="list-group">
+    <ListGroup>
       {tasks.map((task) => (
         <TaskItem 
-        key={task.id}
-        id={task.id} 
-        title={task.title} 
-        completed={task.completed} 
+          key={task.id}
+          id={task.id} 
+          title={task.title} 
+          completed={task.completed} 
     />
       ))}
-    </ul>
+    </ListGroup>
   );
 };
 
