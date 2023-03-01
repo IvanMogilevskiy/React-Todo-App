@@ -12,3 +12,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.task-enter-active {
+  animation: task 800ms ease-in alternate-reverse;
+}
+
+.task-exit-active {
+  animation: task 800ms ease-out forwards;
+}
+
+@keyframes task {
+  0% {
+    transform: translateX(0);
+  }
+
+  30% {
+    opacity: 0.7;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+}

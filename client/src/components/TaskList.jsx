@@ -1,7 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable functional/no-expression-statements */
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { ListGroup } from "react-bootstrap";
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import TaskItem from "./TaskItem.jsx";
 import { fetchTasks } from "../redux/taskSlice.js";
 
@@ -15,16 +16,22 @@ const TaskList = () => {
   }, [dispatch]);
 
   return (
-    <ListGroup>
-      {tasks.map((task) => (
-        <TaskItem 
-          key={task.id}
-          id={task.id} 
-          title={task.title} 
-          completed={task.completed} 
-    />
-      ))}
-    </ListGroup>
+    <TransitionGroup component="ul" className="list-group">
+        {tasks.map((task) => (
+          <CSSTransition 
+            key={task.id}
+            classNames='task'
+            timeout={800}
+          >
+            <TaskItem 
+            key={task.id}
+            id={task.id} 
+            title={task.title} 
+            completed={task.completed} 
+            />
+          </CSSTransition>
+        ))}
+    </TransitionGroup>
   );
 };
 
