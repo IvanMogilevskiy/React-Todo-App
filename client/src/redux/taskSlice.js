@@ -22,7 +22,7 @@ export const addTaskAsync = createAsyncThunk(
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ title: payload.title }),
+      body: JSON.stringify({ title: payload.title, date: payload.date }),
     });
 
     if (response.ok) {

@@ -1,9 +1,9 @@
 /* eslint-disable functional/no-expression-statements */
 import { useDispatch } from 'react-redux';
-import { ListGroupItem } from 'react-bootstrap';
+import { ListGroupItem, Button } from 'react-bootstrap';
 import { completeTaskAsync, deleteTaskAsync } from '../redux/taskSlice.js';
 
-const TaskItem = ({ id, title, completed }) => {
+const TaskItem = ({ id, title, date, completed }) => {
   const dispatch = useDispatch();
 
   const handleCompleteTask = () => {
@@ -24,15 +24,18 @@ const TaskItem = ({ id, title, completed }) => {
             checked={completed}
             onChange={handleCompleteTask}
           />
-          {title}
+          <div>
+            <strong>{title}</strong>
+            <small>{date}</small>
+          </div>
         </span>
-        <button 
-          className="btn btn-danger"
-          type="button"
+        <Button 
+          variant="outline-danger"
           onClick={handleDeleteTask}
+          size="sm"
         >
-          Delete
-        </button>
+          &times;
+        </Button>
       </div>
     </ListGroupItem>
   );

@@ -26,7 +26,8 @@ const TaskList = () => {
             <TaskItem 
             key={task.id}
             id={task.id} 
-            title={task.title} 
+            title={task.title}
+            date={task.date}
             completed={task.completed} 
             />
           </CSSTransition>

@@ -14,15 +14,19 @@ const { json } = pkg;
 app.use(cors());
 app.use(json());
 
+const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
 let tasks = [
   {
     id: nanoid(),
     title: 'Buy milk',
+    date: new Date().toLocaleDateString('en-US', dateOptions),
     completed: true,
   },
   {
     id: nanoid(),
     title: 'Learn TypeScript',
+    date: new Date().toLocaleDateString('en-US', dateOptions),
     completed: false,
   },
 ];
@@ -30,7 +34,7 @@ let tasks = [
 app.get('/tasks', (req, res) => res.send(tasks));
 
 app.post('/tasks', (req, res) => {
-  const task = { title: req.body.title, id: nanoid(), completed: false };
+  const task = { title: req.body.title, date: req.body.date, id: nanoid(), completed: false };
   tasks.push(task);
   return res.send(task);
 });

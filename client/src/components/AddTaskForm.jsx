@@ -13,11 +13,15 @@ const AddTaskForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (value) {
+    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
+    if (value.trim()) {
       dispatch(addTaskAsync({
           title: value,
-        })
+          date: new Date().toLocaleDateString('en-US', dateOptions),
+        }) 
       )
+      setValue('');
     }
   };
 
@@ -33,7 +37,10 @@ const AddTaskForm = () => {
           onChange={(e) => setValue(e.target.value)}
         />
       </FloatingLabel>
-      <Button type="submit" className="mb-2" variant="primary">
+      <Button 
+      type="submit"
+      className="mb-2" 
+      variant="outline-primary">
         Submit
       </Button>
     </Form>

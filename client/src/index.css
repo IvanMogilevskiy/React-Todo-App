@@ -13,6 +13,10 @@ code {
     monospace;
 }
 
+strong {
+  margin-right: 1rem;
+}
+
 .task-enter-active {
   animation: task 800ms ease-in alternate-reverse;
 }
