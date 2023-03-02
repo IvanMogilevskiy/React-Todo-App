@@ -1,3 +1,5 @@
+/* eslint-disable no-else-return */
+/* eslint-disable functional/no-conditional-statements */
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 /* eslint-disable functional/no-expression-statements */
@@ -28,6 +30,8 @@ export const addTaskAsync = createAsyncThunk(
     if (response.ok) {
       const task = await response.json();
       return { task };
+    } else {
+      alert.show('Connection error');
     }
   }
 );
@@ -46,6 +50,8 @@ export const completeTaskAsync = createAsyncThunk(
     if (response.ok) {
       const task = await response.json();
       return { task };
+    } else {
+      alert.show('Connection error');
     }
   }
 );
@@ -59,6 +65,8 @@ export const deleteTaskAsync = createAsyncThunk(
 
     if (response.ok) {
       return { id: payload.id };
+    } else {
+      alert.show('Connection error');
     }
   }
 );
